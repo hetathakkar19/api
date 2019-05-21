@@ -9,9 +9,12 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
 
+    /**
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function index()
     {
-       return ProductCollection::collection(Product::all());
+       return ProductCollection::collection(Product::paginate(20));
     }
 
     public function create()
